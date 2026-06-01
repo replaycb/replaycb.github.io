@@ -149,12 +149,28 @@ export default function Home() {
                         way. We hope to see you join!
                         <br />
                         <br />
-                        Our Gmail account is currently locked after being
-                        incorrectly flagged by Google. We&rsquo;ve submitted an
-                        appeal which takes around 3 days to process. In the
-                        meantime, the Group Finder and CB Directory will be
-                        temporarily unavailable.
+                        To help guide participants in this CB, RE:CB has
+                        compiled a directory of chorus battles from across the
+                        years, along with links to their official playlists. We
+                        hope this serves as a helpful reference moving forward.
                     </p>
+                    <div className="flex flex-wrap gap-4 justify-center">
+                        <a
+                            href="https://docs.google.com/spreadsheets/d/1SAJgWRMmhqKNdwoIzI2SYK0w3s5FkHHj_MAiwIJeTik/edit?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-5 py-2.5 rounded-4xl border  bg-main-100 text-white/80 hover:text-white hover:border-white/50 transition-colors text-xl font-arose"
+                        >
+                            Chorus Battle Directory
+                        </a>
+                        <a
+                            href="https://docs.google.com/spreadsheets/d/1HAhd7WZTlKBtN-F9x07I34pDkUXbCDzj0_kSA9hJHs8/edit?usp=sharing"
+                            target="_blank"
+                            className="px-5 py-2.5 rounded-4xl border bg-main-100 text-white/80 hover:text-white hover:border-white/50 transition-colors text-xl font-arose"
+                        >
+                            Group Finder
+                        </a>
+                    </div>
                 </div>
             </section>
 
