@@ -44,10 +44,10 @@ const categories = [
 const total = categories.reduce((sum, r) => sum + r.points, 0);
 
 // Column widths — edit these to adjust the grid
-const COL_CATEGORY = "1fr";
+const COL_CATEGORY = "minmax(0, 1.5fr)";
 const COL_DIVIDER = "1px";
-const COL_POINTS = "100px";
-const COL_RUBRIC = "250px";
+const COL_POINTS = "70px";
+const COL_RUBRIC = "minmax(0, 1fr)";
 const GRID_COLS = `${COL_CATEGORY} ${COL_DIVIDER} ${COL_POINTS} ${COL_DIVIDER} ${COL_RUBRIC}`;
 
 const DIVIDER_STYLE = {
@@ -61,11 +61,10 @@ function RubricButton({ href, label }) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-arose text-[12px] tracking-[0.2em] uppercase text-white transition-all duration-200 hover:brightness-125 flex items-center justify-center"
+            className="font-arose text-[8px] md:text-[12px] uppercase text-white transition-all duration-200 hover:brightness-125 flex items-center justify-center w-full px-2"
             style={{
                 background: "#a60000",
-                // border: "1px solid rgba(255,255,255,0.6)",
-                width: "160px",
+                maxWidth: "160px",
                 height: "28px",
             }}
         >
@@ -73,8 +72,8 @@ function RubricButton({ href, label }) {
         </a>
     ) : (
         <span
-            className="font-arose text-[18px] tracking-[0.2em] uppercase text-[#a60000] flex items-center justify-center"
-            style={{ width: "140px", height: "28px" }}
+            className="font-arose text-[16px] sm:text-[18px] tracking-[0.2em] uppercase text-[#a60000] flex items-center justify-center"
+            style={{ height: "28px" }}
         >
             N/A
         </span>
@@ -126,15 +125,15 @@ export default function Scoring() {
                             borderBottom: "2px solid #a60000",
                         }}
                     >
-                        <div className="px-6 py-5 font-arose text-xl   text-[#a60000]">
+                        <div className="px-3 sm:px-6 py-5 font-arose text-base sm:text-xl text-[#a60000]">
                             Categories
                         </div>
                         <div style={DIVIDER_STYLE} />
-                        <div className="py-5 font-arose text-xl   text-[#a60000] text-center">
+                        <div className="py-5 font-arose text-base sm:text-xl text-[#a60000] text-center">
                             Points
                         </div>
                         <div style={DIVIDER_STYLE} />
-                        <div className="py-5 font-arose text-xl  text-[#a60000] text-center">
+                        <div className="py-5 font-arose text-base sm:text-xl text-[#a60000] text-center">
                             Rubrics
                         </div>
                     </div>
@@ -150,11 +149,11 @@ export default function Scoring() {
                                     "1px solid rgba(255,255,255,0.06)",
                             }}
                         >
-                            <div className="px-6 py-4 font-arose text-white text-base tracking-wide">
+                            <div className="px-3 sm:px-6 py-4 font-arose text-white text-sm sm:text-base tracking-wide">
                                 {row.category}
                             </div>
                             <div style={DIVIDER_STYLE} />
-                            <div className="py-4 font-arose text-white text-base text-center tabular-nums">
+                            <div className="py-4 font-arose text-white text-sm sm:text-base text-center tabular-nums">
                                 {row.points}
                             </div>
                             <div style={DIVIDER_STYLE} />
@@ -176,9 +175,9 @@ export default function Scoring() {
                         }}
                     >
                         {/* Label with ornament */}
-                        <div className="px-8 py-7 flex items-center gap-3">
+                        <div className="px-3 sm:px-8 py-7 flex items-center gap-2 sm:gap-3">
                             <span
-                                className="text-[#a60000]"
+                                className="text-[#a60000] hidden sm:inline"
                                 style={{
                                     fontSize: "8px",
                                     letterSpacing: "4px",
@@ -186,7 +185,7 @@ export default function Scoring() {
                             >
                                 ◆◆◆
                             </span>
-                            <span className="font-arose text-xl tracking-[0.4em] uppercase text-[#a60000]">
+                            <span className="font-arose text-base sm:text-xl tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[#a60000]">
                                 Total Score
                             </span>
                         </div>
