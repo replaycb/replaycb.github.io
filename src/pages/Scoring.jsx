@@ -90,7 +90,7 @@ export default function Scoring() {
                     Scoring & Rubrics
                 </h1>
                 <div className="text-left my-8 border-l-1 border-[#a60000] pl-6">
-                    <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
+                    <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
                         Replay Chorus Battle scoring is based on a 200-point
                         system across 6 categories. At the end of each round,
                         all 8 judges will submit scores using the rubrics linked
@@ -98,7 +98,7 @@ export default function Scoring() {
                         intended to provide a consistent and transparent
                         framework for evaluation.
                     </p>
-                    <p className="text-white/60 text-lg max-w-2xl mx-auto ">
+                    <p className="text-white/80 text-lg max-w-2xl mx-auto ">
                         After deductions are applied, the top 50% of groups
                         based on total score will advance to the next round. A
                         sample scoresheet is provided below for reference.
@@ -210,7 +210,7 @@ export default function Scoring() {
             </div>
 
             <div className="text-left my-8 border-l-1 border-[#a60000] pl-6">
-                <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
+                <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
                     Replay Chorus Battle will feature a{" "}
                     <span className="font-bold">Judge's Choice</span> system,
                     where each judge may select their favorite entry of the
@@ -223,7 +223,7 @@ export default function Scoring() {
                     </span>
                     .
                 </p>
-                <p className="text-white/60 text-lg max-w-2xl mx-auto ">
+                <p className="text-white/80 text-lg max-w-2xl mx-auto ">
                     Groups that receive a Judge's Choice award will see it
                     displayed at the bottom of their scoresheets. These awards
                     are a fun way for judges to recognize an entry that they
