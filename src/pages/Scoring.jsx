@@ -61,7 +61,7 @@ function RubricButton({ href, label }) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-arose text-[10px] tracking-[0.2em] uppercase text-white transition-all duration-200 hover:brightness-125 flex items-center justify-center"
+            className="font-arose text-[12px] tracking-[0.2em] uppercase text-white transition-all duration-200 hover:brightness-125 flex items-center justify-center"
             style={{
                 background: "#a60000",
                 // border: "1px solid rgba(255,255,255,0.6)",
@@ -73,7 +73,7 @@ function RubricButton({ href, label }) {
         </a>
     ) : (
         <span
-            className="font-arose text-[10px] tracking-[0.2em] uppercase text-[#a60000] flex items-center justify-center"
+            className="font-arose text-[18px] tracking-[0.2em] uppercase text-[#a60000] flex items-center justify-center"
             style={{ width: "140px", height: "28px" }}
         >
             N/A
@@ -93,16 +93,15 @@ export default function Scoring() {
                     <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
                         Replay Chorus Battle scoring is based on a 200-point
                         system across 6 categories. At the end of each round,
-                        all 8 judges will submit scores using the
-                        category-specific rubrics linked below. These rubrics
-                        were developed by the judges themselves and are intended
-                        to provide a consistent and transparent framework for
-                        evaluation.
+                        all 8 judges will submit scores using the rubrics linked
+                        below. These were developed by the RE:CB judges and are
+                        intended to provide a consistent and transparent
+                        framework for evaluation.
                     </p>
                     <p className="text-white/60 text-lg max-w-2xl mx-auto ">
                         After deductions are applied, the top 50% of groups
                         based on total score will advance to the next round. A
-                        sample scoresheet is also provided below for reference.
+                        sample scoresheet is provided below for reference.
                     </p>
                 </div>
             </div>
@@ -215,11 +214,10 @@ export default function Scoring() {
                     Replay Chorus Battle will feature a{" "}
                     <span className="font-bold">Judge's Choice</span> system,
                     where each judge may select their favorite entry of the
-                    round regardless of scoring. Each judge may select only one
-                    entry per round. To be cognizant of any unintentional bias,
-                    these selections are made independently of the scoring
-                    process and do not influence a group's score, ranking, or
-                    advancement{" "}
+                    round. Each judge may select only one entry per round. To be
+                    cognizant of any unintentional bias, these selections are
+                    made independently of the scoring process and do not
+                    influence a group's score, ranking, or advancement{" "}
                     <span className="font-bold">
                         (i.e., all Judge's Choice awards are worth 0 points)
                     </span>
