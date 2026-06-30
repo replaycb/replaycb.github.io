@@ -4,7 +4,9 @@ import { useEffect, useRef } from "react";
 import judge2 from "../assets/2_t.png";
 import judge4 from "../assets/4_t.png";
 import judge5 from "../assets/5_t.png";
+import judge6 from "../assets/6_t.png";
 import judge7 from "../assets/7_t.png";
+import judge8 from "../assets/8_t.png";
 
 import JudgeCategory from "../components/JudgeCategory";
 
@@ -44,6 +46,21 @@ const categories = [
                 image: judge2,
                 twitter: "https://x.com/katieheehee",
                 youtube: "https://www.youtube.com/@katieheehee",
+            },
+        ],
+    },
+    {
+        name: "Art Judges",
+        members: [
+            {
+                name: "Ena",
+                image: judge8,
+                twitter: "https://x.com/_EnaMeii",
+            },
+            {
+                name: "Kyu",
+                image: judge6,
+                twitter: "https://x.com/Okyurita",
             },
         ],
     },
