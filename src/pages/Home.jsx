@@ -5,18 +5,27 @@ import logoImage from "../assets/RECB_Logo.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Round 1: Jul 1, 2026 00:00:00 CDT (UTC−5)
-const ROUND_1_START = new Date("2026-07-01T05:00:00Z").getTime();
+// Jul 1, 2026 12:00 PM CDT (UTC−5)
+const REG_OPEN = new Date("2026-07-01T17:00:00Z").getTime();
+// Aug 31, 2026 11:59 PM CDT (UTC−5)
+const REG_CLOSE = new Date("2026-09-01T04:59:00Z").getTime();
 
-function getTimeLeft() {
-    const diff = ROUND_1_START - Date.now();
-    if (diff <= 0) return null;
+function calcTime(diff) {
     return {
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((diff / (1000 * 60)) % 60),
         seconds: Math.floor((diff / 1000) % 60),
     };
+}
+
+function getCountdownState() {
+    const now = Date.now();
+    if (now < REG_OPEN)
+        return { phase: "opens", timeLeft: calcTime(REG_OPEN - now) };
+    if (now < REG_CLOSE)
+        return { phase: "closes", timeLeft: calcTime(REG_CLOSE - now) };
+    return { phase: "closed", timeLeft: null };
 }
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -27,7 +36,7 @@ export default function Home() {
     const barRef = useRef(null);
     const blurbRef = useRef(null);
     const countdownRef = useRef(null);
-    const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+    const [countdown, setCountdown] = useState(getCountdownState);
 
     useEffect(() => {
         const tl = gsap.timeline();
@@ -92,7 +101,10 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+        const interval = setInterval(
+            () => setCountdown(getCountdownState()),
+            1000,
+        );
         return () => clearInterval(interval);
     }, []);
 
@@ -182,25 +194,57 @@ export default function Home() {
                     style={{ opacity: 0 }}
                 >
                     <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-3">
-                        Countdown to
+                        {countdown.phase === "opens"
+                            ? "Countdown to"
+                            : countdown.phase === "closes"
+                              ? "Countdown to"
+                              : ""}
                     </p>
                     <h2 className="text-3xl sm:text-5xl font-arose font-bold text-main-100 mb-4">
-                        Registration <span className="text-main-100"></span>
+                        {countdown.phase === "opens"
+                            ? "Registration"
+                            : countdown.phase === "closes"
+                              ? "Registration Closes"
+                              : "Registration"}
                     </h2>
-                    <p className="text-5xl font-arose tracking-widest text-white uppercase mt-16 animate-pulse-red-white">
-                        July 1 2026
-                    </p>
-                    <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-6 mt-4">
-                        12:00 AM CDT
-                    </p>
+                    {countdown.phase !== "closed" && (
+                        <>
+                            <p className="text-5xl font-arose tracking-widest text-white uppercase mt-16 animate-pulse-red-white">
+                                {countdown.phase === "opens"
+                                    ? "July 1 2026"
+                                    : "Aug 31 2026"}
+                            </p>
+                            <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-6 mt-4">
+                                {countdown.phase === "opens"
+                                    ? "12:00 PM CDT"
+                                    : "11:59 PM CDT"}
+                            </p>
+                        </>
+                    )}
 
-                    {timeLeft ? (
+                    {countdown.phase === "closed" ? (
+                        <p className="text-3xl font-arose text-main-100 tracking-wide">
+                            Registration is now closed!
+                        </p>
+                    ) : (
                         <div className="flex gap-4 sm:gap-8 md:gap-16">
                             {[
-                                { label: "Days", value: timeLeft.days },
-                                { label: "Hours", value: timeLeft.hours },
-                                { label: "Minutes", value: timeLeft.minutes },
-                                { label: "Seconds", value: timeLeft.seconds },
+                                {
+                                    label: "Days",
+                                    value: countdown.timeLeft.days,
+                                },
+                                {
+                                    label: "Hours",
+                                    value: countdown.timeLeft.hours,
+                                },
+                                {
+                                    label: "Minutes",
+                                    value: countdown.timeLeft.minutes,
+                                },
+                                {
+                                    label: "Seconds",
+                                    value: countdown.timeLeft.seconds,
+                                },
                             ].map(({ label, value }) => (
                                 <div
                                     key={label}
@@ -215,10 +259,6 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                    ) : (
-                        <p className="text-3xl font-arose text-main-100 tracking-wide">
-                            Round 1 has begun!
-                        </p>
                     )}
                 </div>
             </section>
