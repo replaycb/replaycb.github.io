@@ -1,7 +1,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import judge1 from "../assets/1_t.png";
 import judge2 from "../assets/2_t.png";
+import judge3 from "../assets/3_t.png";
 import judge4 from "../assets/4_t.png";
 import judge5 from "../assets/5_t.png";
 import judge6 from "../assets/6_t.png";
@@ -61,6 +63,23 @@ const categories = [
                 name: "Kyu",
                 image: judge6,
                 twitter: "https://x.com/Okyurita",
+            },
+        ],
+    },
+    {
+        name: "Anim Judges",
+        members: [
+            {
+                name: "Kuro",
+                image: judge1,
+                twitter: "https://x.com/furfrou",
+                youtube: "https://www.youtube.com/@kurokuma",
+            },
+            {
+                name: "Mika",
+                image: judge3,
+                twitter: "https://x.com/hongmika_",
+                youtube: "https://www.youtube.com/@hongmika",
             },
         ],
     },
