@@ -182,6 +182,13 @@ export default function Home() {
                         >
                             Group Finder
                         </a>
+                        <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSdK0JpsGmQBnbRnMpygMzUYUVv5uPVCnkcZ4tY4O4kfAxuBIQ/viewform"
+                            target="_blank"
+                            className="px-5 py-2.5 rounded-4xl border bg-main-100 text-white/80 hover:text-white hover:border-white/50 transition-colors text-xl font-arose"
+                        >
+                            Group Registration
+                        </a>
                     </div>
                 </div>
             </section>
