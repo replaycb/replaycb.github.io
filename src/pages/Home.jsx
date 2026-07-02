@@ -166,7 +166,7 @@ export default function Home() {
                         years, along with links to their official playlists. We
                         hope this serves as a helpful reference moving forward.
                     </p>
-                    <div className="flex flex-wrap gap-4 justify-center">
+                    <div className="flex flex-wrap gap-4 justify-center mb-3">
                         <a
                             href="https://docs.google.com/spreadsheets/d/1SAJgWRMmhqKNdwoIzI2SYK0w3s5FkHHj_MAiwIJeTik/edit?usp=sharing"
                             target="_blank"
@@ -182,12 +182,22 @@ export default function Home() {
                         >
                             Group Finder
                         </a>
+                    </div>
+                    <div className="flex flex-wrap gap-4 justify-center mb-3">
                         <a
                             href="https://docs.google.com/forms/d/e/1FAIpQLSdK0JpsGmQBnbRnMpygMzUYUVv5uPVCnkcZ4tY4O4kfAxuBIQ/viewform"
                             target="_blank"
-                            className="px-5 py-2.5 rounded-4xl border bg-main-100 text-white/80 hover:text-white hover:border-white/50 transition-colors text-xl font-arose"
+                            className="px-5 py-2.5 rounded-4xl border text-main-100/80 bg-white/80 hover:text-main-100 hover:border-white/50 transition-colors text-xl font-arose"
                         >
                             Group Registration
+                        </a>
+
+                        <a
+                            href="https://docs.google.com/spreadsheets/d/18cSFoH3shVbxi0LbTrI3XvmEv4xQTKr6UNwSleLLYD0/edit?usp=sharing"
+                            target="_blank"
+                            className="px-5 py-2.5 rounded-4xl border text-main-100/80 bg-white/80 hover:text-main-100 hover:border-white/50 transition-colors text-xl font-arose"
+                        >
+                            Public Registry
                         </a>
                     </div>
                 </div>
