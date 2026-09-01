@@ -9,6 +9,18 @@ gsap.registerPlugin(ScrollTrigger);
 const REG_OPEN = new Date("2026-07-01T17:00:00Z").getTime();
 // Aug 31, 2026 11:59 PM CDT (UTC−5)
 const REG_CLOSE = new Date("2026-09-01T04:59:00Z").getTime();
+// Oct 31, 2026 11:59 PM CDT (UTC−5)
+const ROUND_1_CLOSE = new Date("2026-10-31T04:59:00Z").getTime();
+// Sep 1, 2026 10:00 AM CDT (UTC−5)
+const ROUND_1_THEME = new Date("2026-09-01T15:00:00Z").getTime();
+// Jan 16, 2027 11:59 PM CST (UTC−6)
+const ROUND_2_CLOSE = new Date("2027-01-16T05:59:00Z").getTime();
+// Nov 15, 2026 10:00 AM CDT (UTC−5)
+const ROUND_2_THEME = new Date("2026-11-15T15:00:00Z").getTime();
+// Apr 3, 2027 11:59 PM CDT (UTC−5)
+const ROUND_3_CLOSE = new Date("2027-04-03T04:59:00Z").getTime();
+// Feb 1, 2027 10:00 AM CDT (UTC−5)
+const ROUND_3_THEME = new Date("2027-02-01T15:00:00Z").getTime();
 
 function calcTime(diff) {
     return {
@@ -21,11 +33,103 @@ function calcTime(diff) {
 
 function getCountdownState() {
     const now = Date.now();
-    if (now < REG_OPEN)
-        return { phase: "opens", timeLeft: calcTime(REG_OPEN - now) };
-    if (now < REG_CLOSE)
-        return { phase: "closes", timeLeft: calcTime(REG_CLOSE - now) };
-    return { phase: "closed", timeLeft: null };
+
+    if (now < REG_OPEN) {
+        return {
+            phase: "opens",
+            label: "Countdown to",
+            headline: "Registration",
+            dateLabel: "July 1 2026",
+            timeLabel: "12:00 PM CDT",
+            timeLeft: calcTime(REG_OPEN - now),
+        };
+    }
+
+    if (now < REG_CLOSE) {
+        return {
+            phase: "registration",
+            label: "Countdown to",
+            headline: "Countdown to Registration Closes",
+            dateLabel: "Aug 31 2026",
+            timeLabel: "11:59 PM CDT",
+            timeLeft: calcTime(REG_CLOSE - now),
+        };
+    }
+
+    if (now < ROUND_1_THEME) {
+        return {
+            phase: "round-1-theme",
+            label: "Countdown to",
+            headline: "Countdown to Round 1 Theme Announcement",
+            dateLabel: "Sep 1 2026",
+            timeLabel: "10:00 AM CDT",
+            timeLeft: calcTime(ROUND_1_THEME - now),
+        };
+    }
+
+    if (now < ROUND_1_CLOSE) {
+        return {
+            phase: "round-1",
+            label: "Countdown to",
+            headline: "Countdown to Round 1 Ends",
+            dateLabel: "Oct 31 2026",
+            timeLabel: "11:59 PM CDT",
+            timeLeft: calcTime(ROUND_1_CLOSE - now),
+        };
+    }
+
+    if (now < ROUND_2_THEME) {
+        return {
+            phase: "round-2-theme",
+            label: "Countdown to",
+            headline: "Countdown to Round 2 Theme Announcement",
+            dateLabel: "Nov 15 2026",
+            timeLabel: "10:00 AM CDT",
+            timeLeft: calcTime(ROUND_2_THEME - now),
+        };
+    }
+
+    if (now < ROUND_2_CLOSE) {
+        return {
+            phase: "round-2",
+            label: "Countdown to",
+            headline: "Countdown to Round 2 Ends",
+            dateLabel: "Jan 16 2027",
+            timeLabel: "11:59 PM CST",
+            timeLeft: calcTime(ROUND_2_CLOSE - now),
+        };
+    }
+
+    if (now < ROUND_3_THEME) {
+        return {
+            phase: "round-3-theme",
+            label: "Countdown to",
+            headline: "Countdown to Round 3 Theme Announcement",
+            dateLabel: "Feb 1 2027",
+            timeLabel: "10:00 AM CDT",
+            timeLeft: calcTime(ROUND_3_THEME - now),
+        };
+    }
+
+    if (now < ROUND_3_CLOSE) {
+        return {
+            phase: "round-3",
+            label: "Countdown to",
+            headline: "Countdown to Round 3 Ends",
+            dateLabel: "Apr 3 2027",
+            timeLabel: "11:59 PM CDT",
+            timeLeft: calcTime(ROUND_3_CLOSE - now),
+        };
+    }
+
+    return {
+        phase: "complete",
+        label: "",
+        headline: "Thank you for participating in Replay CB!",
+        dateLabel: "",
+        timeLabel: "",
+        timeLeft: null,
+    };
 }
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -185,14 +289,6 @@ export default function Home() {
                     </div>
                     <div className="flex flex-wrap gap-4 justify-center mb-3">
                         <a
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSdK0JpsGmQBnbRnMpygMzUYUVv5uPVCnkcZ4tY4O4kfAxuBIQ/viewform"
-                            target="_blank"
-                            className="px-5 py-2.5 rounded-4xl border text-main-100/80 bg-white/80 hover:text-main-100 hover:border-white/50 transition-colors text-xl font-arose"
-                        >
-                            Group Registration
-                        </a>
-
-                        <a
                             href="https://docs.google.com/spreadsheets/d/18cSFoH3shVbxi0LbTrI3XvmEv4xQTKr6UNwSleLLYD0/edit?usp=sharing"
                             target="_blank"
                             className="px-5 py-2.5 rounded-4xl border text-main-100/80 bg-white/80 hover:text-main-100 hover:border-white/50 transition-colors text-xl font-arose"
@@ -210,40 +306,26 @@ export default function Home() {
                     className="text-center"
                     style={{ opacity: 0 }}
                 >
-                    <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-3">
-                        {countdown.phase === "opens"
-                            ? "Countdown to"
-                            : countdown.phase === "closes"
-                              ? "Countdown to"
-                              : ""}
-                    </p>
+                    {countdown.phase !== "complete" && (
+                        <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-3">
+                            {countdown.label}
+                        </p>
+                    )}
                     <h2 className="text-3xl sm:text-5xl font-arose font-bold text-main-100 mb-4">
-                        {countdown.phase === "opens"
-                            ? "Registration"
-                            : countdown.phase === "closes"
-                              ? "Registration Closes"
-                              : "Registration"}
+                        {countdown.headline}
                     </h2>
-                    {countdown.phase !== "closed" && (
+                    {countdown.phase !== "complete" && (
                         <>
                             <p className="text-5xl font-arose tracking-widest text-white uppercase mt-16 animate-pulse-red-white">
-                                {countdown.phase === "opens"
-                                    ? "July 1 2026"
-                                    : "Aug 31 2026"}
+                                {countdown.dateLabel}
                             </p>
                             <p className="text-sm font-arose tracking-widest text-white/50 uppercase mb-6 mt-4">
-                                {countdown.phase === "opens"
-                                    ? "12:00 PM CDT"
-                                    : "11:59 PM CDT"}
+                                {countdown.timeLabel}
                             </p>
                         </>
                     )}
 
-                    {countdown.phase === "closed" ? (
-                        <p className="text-3xl font-arose text-main-100 tracking-wide">
-                            Registration is now closed!
-                        </p>
-                    ) : (
+                    {countdown.phase === "complete" ? null : (
                         <div className="flex gap-4 sm:gap-8 md:gap-16">
                             {[
                                 {

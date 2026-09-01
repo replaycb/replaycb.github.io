@@ -48,7 +48,7 @@ export default function Schedule() {
                         {/* Content */}
                         <div className="pb-10">
                             <h2
-                                className={`text-3xl font-arose mb-2 ${round === "Registration" ? "animate-pulse-red-white" : "text-white"}`}
+                                className={`text-3xl font-arose mb-2 ${round === "Round 1" ? "animate-pulse-red-white" : "text-white"}`}
                             >
                                 {round}
                             </h2>
