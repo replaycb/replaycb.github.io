@@ -49,7 +49,7 @@ function getCountdownState() {
         return {
             phase: "registration",
             label: "Countdown to",
-            headline: "Countdown to Registration Closes",
+            headline: "Registration Closes",
             dateLabel: "Aug 31 2026",
             timeLabel: "11:59 PM CDT",
             timeLeft: calcTime(REG_CLOSE - now),
@@ -60,7 +60,7 @@ function getCountdownState() {
         return {
             phase: "round-1-theme",
             label: "Countdown to",
-            headline: "Countdown to Round 1 Theme Announcement",
+            headline: "Round 1 Theme Announcement",
             dateLabel: "Sep 1 2026",
             timeLabel: "10:00 AM CDT",
             timeLeft: calcTime(ROUND_1_THEME - now),
@@ -71,7 +71,7 @@ function getCountdownState() {
         return {
             phase: "round-1",
             label: "Countdown to",
-            headline: "Countdown to Round 1 Ends",
+            headline: "Round 1 Ends",
             dateLabel: "Oct 31 2026",
             timeLabel: "11:59 PM CDT",
             timeLeft: calcTime(ROUND_1_CLOSE - now),
@@ -82,7 +82,7 @@ function getCountdownState() {
         return {
             phase: "round-2-theme",
             label: "Countdown to",
-            headline: "Countdown to Round 2 Theme Announcement",
+            headline: "Round 2 Theme Announcement",
             dateLabel: "Nov 15 2026",
             timeLabel: "10:00 AM CDT",
             timeLeft: calcTime(ROUND_2_THEME - now),
@@ -93,7 +93,7 @@ function getCountdownState() {
         return {
             phase: "round-2",
             label: "Countdown to",
-            headline: "Countdown to Round 2 Ends",
+            headline: "Round 2 Ends",
             dateLabel: "Jan 16 2027",
             timeLabel: "11:59 PM CST",
             timeLeft: calcTime(ROUND_2_CLOSE - now),
@@ -104,7 +104,7 @@ function getCountdownState() {
         return {
             phase: "round-3-theme",
             label: "Countdown to",
-            headline: "Countdown to Round 3 Theme Announcement",
+            headline: "Round 3 Theme Announcement",
             dateLabel: "Feb 1 2027",
             timeLabel: "10:00 AM CDT",
             timeLeft: calcTime(ROUND_3_THEME - now),
@@ -115,7 +115,7 @@ function getCountdownState() {
         return {
             phase: "round-3",
             label: "Countdown to",
-            headline: "Countdown to Round 3 Ends",
+            headline: "Round 3 Ends",
             dateLabel: "Apr 3 2027",
             timeLabel: "11:59 PM CDT",
             timeLeft: calcTime(ROUND_3_CLOSE - now),
