@@ -38,7 +38,7 @@ const categories = [
         name: "Mix Judges",
         members: [
             {
-                name: "Niu Arx",
+                name: "niu arx",
                 image: judge5,
                 twitter: "https://x.com/niu_arx",
                 youtube: "https://www.youtube.com/@niu_arx",
