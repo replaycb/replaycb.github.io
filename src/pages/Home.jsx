@@ -10,7 +10,7 @@ const REG_OPEN = new Date("2026-07-01T17:00:00Z").getTime();
 // Aug 31, 2026 11:59 PM CDT (UTC−5)
 const REG_CLOSE = new Date("2026-09-01T04:59:00Z").getTime();
 // Oct 31, 2026 11:59 PM CDT (UTC−5)
-const ROUND_1_CLOSE = new Date("2026-10-31T04:59:00Z").getTime();
+const ROUND_1_CLOSE = new Date("2026-11-01T04:59:00Z").getTime();
 // Sep 1, 2026 10:00 AM CDT (UTC−5)
 const ROUND_1_THEME = new Date("2026-09-01T15:00:00Z").getTime();
 // Jan 16, 2027 11:59 PM CST (UTC−6)
@@ -21,114 +21,154 @@ const ROUND_2_THEME = new Date("2026-11-15T15:00:00Z").getTime();
 const ROUND_3_CLOSE = new Date("2027-04-03T04:59:00Z").getTime();
 // Feb 1, 2027 10:00 AM CDT (UTC−5)
 const ROUND_3_THEME = new Date("2027-02-01T15:00:00Z").getTime();
+// Nov 8, 2026 12:00 PM CDT (UTC−5)
+const ROUND_1_RESULTS = new Date("2026-11-08T17:00:00Z").getTime();
+// Jan 24, 2027 12:00 PM CST (UTC−6)
+const ROUND_2_RESULTS = new Date("2027-01-24T18:00:00Z").getTime();
+// Apr 11, 2027 12:00 PM CDT (UTC−5)
+const ROUND_3_RESULTS = new Date("2027-04-11T17:00:00Z").getTime();
+const GRACE_PERIOD_MS = 24 * 60 * 60 * 1000;
 
 function calcTime(diff) {
+    const safeDiff = Math.max(diff, 0);
     return {
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
+        days: Math.floor(safeDiff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((safeDiff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((safeDiff / (1000 * 60)) % 60),
+        seconds: Math.floor((safeDiff / 1000) % 60),
     };
 }
 
 function getCountdownState() {
     const now = Date.now();
 
-    if (now < REG_OPEN) {
-        return {
+    const phases = [
+        {
             phase: "opens",
             label: "Countdown to",
             headline: "Registration",
             dateLabel: "July 1 2026",
             timeLabel: "12:00 PM CDT",
-            timeLeft: calcTime(REG_OPEN - now),
-        };
-    }
-
-    if (now < REG_CLOSE) {
-        return {
+            target: REG_OPEN,
+        },
+        {
             phase: "registration",
             label: "Countdown to",
             headline: "Registration Closes",
             dateLabel: "Aug 31 2026",
             timeLabel: "11:59 PM CDT",
-            timeLeft: calcTime(REG_CLOSE - now),
-        };
-    }
-
-    if (now < ROUND_1_THEME) {
-        return {
+            target: REG_CLOSE,
+        },
+        {
             phase: "round-1-theme",
             label: "Countdown to",
             headline: "Round 1 Theme Announcement",
             dateLabel: "Sep 1 2026",
             timeLabel: "10:00 AM CDT",
-            timeLeft: calcTime(ROUND_1_THEME - now),
-        };
-    }
-
-    if (now < ROUND_1_CLOSE) {
-        return {
+            target: ROUND_1_THEME,
+        },
+        {
             phase: "round-1",
             label: "Countdown to",
-            headline: "Round 1 Ends",
+            headline: "Round 1 End",
             dateLabel: "Oct 31 2026",
             timeLabel: "11:59 PM CDT",
-            timeLeft: calcTime(ROUND_1_CLOSE - now),
-        };
-    }
-
-    if (now < ROUND_2_THEME) {
-        return {
+            target: ROUND_1_CLOSE,
+        },
+        {
+            phase: "round-1-grace",
+            label: "Countdown to",
+            headline: "Grace Period End",
+            dateLabel: "Nov 1 2026",
+            timeLabel: "11:59 PM CDT",
+            target: ROUND_1_CLOSE + GRACE_PERIOD_MS,
+        },
+        {
+            phase: "round-1-results",
+            label: "Countdown to",
+            headline: "Round 1 Results",
+            dateLabel: "Nov 8 2026",
+            timeLabel: "12:00 PM CDT",
+            target: ROUND_1_RESULTS,
+        },
+        {
             phase: "round-2-theme",
             label: "Countdown to",
             headline: "Round 2 Theme Announcement",
             dateLabel: "Nov 15 2026",
             timeLabel: "10:00 AM CDT",
-            timeLeft: calcTime(ROUND_2_THEME - now),
-        };
-    }
-
-    if (now < ROUND_2_CLOSE) {
-        return {
+            target: ROUND_2_THEME,
+        },
+        {
             phase: "round-2",
             label: "Countdown to",
-            headline: "Round 2 Ends",
+            headline: "Round 2 End",
             dateLabel: "Jan 16 2027",
             timeLabel: "11:59 PM CST",
-            timeLeft: calcTime(ROUND_2_CLOSE - now),
-        };
-    }
-
-    if (now < ROUND_3_THEME) {
-        return {
+            target: ROUND_2_CLOSE,
+        },
+        {
+            phase: "round-2-grace",
+            label: "Countdown to",
+            headline: "Grace Period End",
+            dateLabel: "Jan 17 2027",
+            timeLabel: "11:59 PM CST",
+            target: ROUND_2_CLOSE + GRACE_PERIOD_MS,
+        },
+        {
+            phase: "round-2-results",
+            label: "Countdown to",
+            headline: "Round 2 Results",
+            dateLabel: "Jan 24 2027",
+            timeLabel: "12:00 PM CST",
+            target: ROUND_2_RESULTS,
+        },
+        {
             phase: "round-3-theme",
             label: "Countdown to",
             headline: "Round 3 Theme Announcement",
             dateLabel: "Feb 1 2027",
             timeLabel: "10:00 AM CDT",
-            timeLeft: calcTime(ROUND_3_THEME - now),
-        };
-    }
-
-    if (now < ROUND_3_CLOSE) {
-        return {
+            target: ROUND_3_THEME,
+        },
+        {
             phase: "round-3",
             label: "Countdown to",
-            headline: "Round 3 Ends",
+            headline: "Round 3 End",
             dateLabel: "Apr 3 2027",
             timeLabel: "11:59 PM CDT",
-            timeLeft: calcTime(ROUND_3_CLOSE - now),
-        };
-    }
+            target: ROUND_3_CLOSE,
+        },
+        {
+            phase: "round-3-grace",
+            label: "Countdown to",
+            headline: "Grace Period End",
+            dateLabel: "Apr 4 2027",
+            timeLabel: "11:59 PM CDT",
+            target: ROUND_3_CLOSE + GRACE_PERIOD_MS,
+        },
+        {
+            phase: "round-3-results",
+            label: "Countdown to",
+            headline: "Round 3 Results",
+            dateLabel: "Apr 11 2027",
+            timeLabel: "12:00 PM CDT",
+            target: ROUND_3_RESULTS,
+        },
+    ];
 
-    return {
+    const activePhase = phases.find((phase) => now < phase.target) ?? {
         phase: "complete",
         label: "",
         headline: "Thank you for participating in Replay CB!",
         dateLabel: "",
         timeLabel: "",
-        timeLeft: null,
+        target: Infinity,
+    };
+
+    return {
+        ...activePhase,
+        timeLeft: calcTime(activePhase.target - now),
     };
 }
 
