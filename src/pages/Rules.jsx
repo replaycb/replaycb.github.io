@@ -192,12 +192,12 @@ export default function Rules() {
                                 <li>
                                     A link to the CB Entry whose song you chose
                                 </li>
+                                <li>Script (Doc, Sheet)</li>
                                 <li>Alternate video link (.mp4)</li>
                                 <li>Mix file (.wav)</li>
                                 <li>Acapella file (.mp3)</li>
                                 <li>
-                                    All artwork created for the entry (.png,
-                                    .psd, .jpg OK)
+                                    All artwork created for the entry (.png)
                                 </li>
                                 <li>
                                     A document listing all external assets used
