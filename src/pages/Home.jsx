@@ -12,7 +12,7 @@ const REG_CLOSE = new Date("2026-09-01T04:59:00Z").getTime();
 // Oct 31, 2026 11:59 PM CDT (UTC−5)
 const ROUND_1_CLOSE = new Date("2026-11-01T04:59:00Z").getTime();
 // Nov 1, 2026 11:59 PM CST (UTC−6), after daylight saving time ends
-const ROUND_1_GRACE_END = new Date("2026-11-02T05:59:00Z").getTime();
+const ROUND_1_GRACE_END = new Date("2026-11-02T05:59:59Z").getTime();
 // Sep 1, 2026 10:00 AM CDT (UTC−5)
 const ROUND_1_THEME = new Date("2026-09-01T15:00:00Z").getTime();
 // Jan 16, 2027 11:59 PM CST (UTC−6)
