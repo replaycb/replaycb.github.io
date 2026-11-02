@@ -16,15 +16,15 @@ const ROUND_1_GRACE_END = new Date("2026-11-02T05:59:59Z").getTime();
 // Sep 1, 2026 10:00 AM CDT (UTC−5)
 const ROUND_1_THEME = new Date("2026-09-01T15:00:00Z").getTime();
 // Jan 16, 2027 11:59 PM CST (UTC−6)
-const ROUND_2_CLOSE = new Date("2027-01-16T05:59:00Z").getTime();
+const ROUND_2_CLOSE = new Date("2027-01-16T05:59:59Z").getTime();
 // Nov 15, 2026 10:00 AM CDT (UTC−5)
 const ROUND_2_THEME = new Date("2026-11-15T15:00:00Z").getTime();
 // Apr 3, 2027 11:59 PM CDT (UTC−5)
-const ROUND_3_CLOSE = new Date("2027-04-03T04:59:00Z").getTime();
+const ROUND_3_CLOSE = new Date("2027-04-03T04:59:59Z").getTime();
 // Feb 1, 2027 10:00 AM CDT (UTC−5)
 const ROUND_3_THEME = new Date("2027-02-01T15:00:00Z").getTime();
-// Nov 8, 2026 12:00 PM CDT (UTC−5)
-const ROUND_1_RESULTS = new Date("2026-11-08T17:00:00Z").getTime();
+// Nov 8, 2026 10:00 PM CST (UTC−6)
+const ROUND_1_RESULTS = new Date("2026-11-09T04:00:00Z").getTime();
 // Jan 24, 2027 12:00 PM CST (UTC−6)
 const ROUND_2_RESULTS = new Date("2027-01-24T18:00:00Z").getTime();
 // Apr 11, 2027 12:00 PM CDT (UTC−5)
@@ -90,7 +90,7 @@ function getCountdownState() {
             label: "Countdown to",
             headline: "Round 1 Results",
             dateLabel: "Nov 8 2026",
-            timeLabel: "12:00 PM CST",
+            timeLabel: "10:00 PM CST",
             target: ROUND_1_RESULTS,
         },
         {
